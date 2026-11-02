@@ -40,6 +40,6 @@ class ImagingSession(Base):
     wind_speed_kmh: Mapped[float | None] = mapped_column(Float, nullable=True)
     temperature_c: Mapped[float | None] = mapped_column(Float, nullable=True)
 
-    # RAG / Vector Search (768 dimensions for Gemini text-embedding-004)
+    # RAG / Vector Search (3072 dimensions for Gemini gemini-embedding-001)
     document_text: Mapped[str] = mapped_column(Text, nullable=False)
-    embedding: Mapped[list[float]] = mapped_column(Vector(768), nullable=False)
+    embedding: Mapped[list[float]] = mapped_column(Vector(3072), nullable=False)
