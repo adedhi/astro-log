@@ -98,7 +98,7 @@ def extract_search_filters(user_query: str) -> SearchFilters:
     User Query: "{user_query}"
     """
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -160,7 +160,7 @@ def generate_rag_answer(user_query: str, retrieved_sessions: list[ImagingSession
     """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=user_prompt,
         config=types.GenerateContentConfig(
             system_instruction=RAG_SYSTEM_INSTRUCTION,
