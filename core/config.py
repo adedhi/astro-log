@@ -13,8 +13,8 @@ class Settings(BaseSettings):
     R2_PUBLIC_URL: str = ""
 
     # Required only by ingest.py (local observer coordinates)
-    OBSERVER_LAT: float = 0.0
-    OBSERVER_LON: float = 0.0
+    OBSERVER_LATITUDE: float = 0.0
+    OBSERVER_LONGITUDE: float = 0.0
     OBSERVER_ELEVATION_M: float = 0.0
     OBSERVER_TIMEZONE: str = "America/Toronto"
 
