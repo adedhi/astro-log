@@ -10,3 +10,10 @@ jobs:
           python-version: "3.14"
       - run: pip install -r requirements.txt
       - run: pytest
+        env:
+          DATABASE_URL: "postgresql://user:password@ep-example.us-east-2.aws.neon.tech/neondb?sslmode=require"
+          GEMINI_API_KEY: "dummy_api_key"
+          OBSERVER_LATITUDE: "43.5890"
+          OBSERVER_LONGITUDE: "-79.6441"
+          OBSERVER_ELEVATION_M: "115.0"
+          OBSERVER_TIMEZONE: "America/Toronto"
