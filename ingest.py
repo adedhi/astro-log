@@ -78,7 +78,7 @@ def main() -> None:
         f"Clouds: {context.cloud_cover_pct}%, Wind: {context.wind_speed_kmh} km/h, Temp: {context.temperature_c}°C"
     )
 
-    print("4/5 Synthesizing RAG document and generating Gemini 3072-dim vector embedding...")
+    print("4/5 Synthesizing RAG document and generating Gemini 3072-dimensional vector embedding...")
     doc_text = build_document_text(
         target_name=args.target,
         captured_at_utc=exif.captured_at_utc,

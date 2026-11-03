@@ -89,7 +89,7 @@ st.markdown(
     "prior to Cloudflare R2 upload, computes sky ephemeris via `Astropy`, and indexes 3072-dimensional embeddings in Neon PostgreSQL (`pgvector`)."
 )
 
-tab_gallery, tab_rag = st.tabs(["📸 Session Gallery", "🔍 Ask AstroLog (Hybrid RAG)"])
+tab_gallery, tab_rag = st.tabs(["Session Gallery", "Ask AstroLog (RAG)"])
 
 # === TAB 1: SESSION GALLERY ===
 with tab_gallery:
@@ -121,7 +121,7 @@ with tab_rag:
         "How did wind speed and target altitude affect the sessions?",
         "Show me sessions with crisp craters or minimal atmospheric boiling.",
     ]
-    st.caption("Example queries: " + " • ".join(f"*\"{q}\"*" for q in sample_queries))
+    st.caption(f"Example queries:\n\n" + f"\n\n".join(f"• *\"{q}\"*" for q in sample_queries))
 
     with st.form("rag_query_form"):
         user_query = st.text_input(
@@ -134,7 +134,7 @@ with tab_rag:
         with st.spinner("Running hybrid SQL + pgvector search and synthesizing answer..."):
             with SessionLocal() as db:
                 retrieved_sessions, extracted_filters = hybrid_search(
-                    db=db, user_query=user_query.strip(), top_k=4
+                    db=db, user_query=user_query.strip(), top_k=5
                 )
                 answer = generate_rag_answer(
                     user_query=user_query.strip(),
