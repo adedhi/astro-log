@@ -146,9 +146,7 @@ def generate_rag_answer(user_query: str, retrieved_sessions: list[ImagingSession
     if not retrieved_sessions:
         return "No imaging sessions have been logged in the database yet."
 
-    context_blocks = [
-        f"[Session #{s.id}]\n{s.document_text}" for s in retrieved_sessions
-    ]
+    context_blocks = [f"[Session #{s.id}]\n{s.document_text}" for s in retrieved_sessions]
     formatted_context = "\n\n".join(context_blocks)
 
     user_prompt = f"""
