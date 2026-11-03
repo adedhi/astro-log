@@ -144,7 +144,7 @@ with tab_rag:
         st.markdown("### Answer")
         st.write(answer)
 
-        with st.expander("🛠️ View Extracted Hybrid Search Filters (Pydantic -> SQL)"):
+        with st.expander("View Extracted Hybrid Search Filters"):
             st.json(extracted_filters.model_dump())
 
         if retrieved_sessions:
