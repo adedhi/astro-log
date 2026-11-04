@@ -43,7 +43,7 @@ Finally, the top matching rows are passed back to Gemini to generate an answer t
 | **Frontend** | Streamlit |
 | **Database** | PostgreSQL ([Neon](https://neon.tech)), `pgvector`, SQLAlchemy, `psycopg` v3 |
 | **Image Storage** | [Cloudflare R2](https://developers.cloudflare.com/r2/) (`boto3` S3 client) |
-| **AI / RAG** | Google GenAI SDK (`gemini-3.8-flash`, `gemini-embedding-001`), Pydantic |
+| **AI / RAG** | Google GenAI SDK (`gemini-3.6-flash`, `gemini-embedding-001`), Pydantic |
 | **Image & Sky Data** | Pillow, Astropy, HTTPX (Open-Meteo API) |
 | **Testing & CI** | pytest, GitHub Actions |
 
@@ -72,7 +72,7 @@ astro-log/
 **Prerequisites:** Python 3.11+, a PostgreSQL database with `pgvector` (e.g., [Neon](https://neon.tech)), a [Cloudflare R2](https://developers.cloudflare.com/r2/) bucket (only needed if running `ingest.py`), and a Gemini API key.
 
 ```bash
-git clone [https://github.com/adedhi/astro-log.git](https://github.com/adedhi/astro-log.git)
+git clone https://github.com/adedhi/astro-log.git
 cd astro-log
 python -m venv .venv
 .\.venv\Scripts\activate  # On macOS/Linux: source .venv/bin/activate
@@ -90,7 +90,7 @@ R2_ENDPOINT_URL="https://<account_id>.r2.cloudflarestorage.com"
 R2_ACCESS_KEY_ID="your_r2_access_key_id"
 R2_SECRET_ACCESS_KEY="your_r2_secret_access_key"
 R2_BUCKET_NAME="astrolog-images"
-R2_PUBLIC_URL="[https://pub-xxxxxxxxxxxx.r2.dev](https://pub-xxxxxxxxxxxx.r2.dev)"
+R2_PUBLIC_URL="https://pub-xxxxxxxxxxxx.r2.dev"
 
 OBSERVER_LATITUDE="43.5890"
 OBSERVER_LONGITUDE="-79.6441"
