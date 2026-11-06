@@ -36,6 +36,14 @@ To fix this, `core/rag.py` runs a two-step hybrid search when a question is subm
 
 Finally, the top matching rows are passed back to Gemini to generate an answer that cites the specific session IDs and dates.
 
+## How this was built (Agentic workflow)
+
+Most of the code in this repo was written using the Antigravity IDE agent in VS Code powered by Gemini Argon:
+
+- **Planning the work** — Before generating any code, I broke the architecture down into separate modules (`core/` for database and RAG, `ingestion/` for local EXIF parsing, sky/weather enrichment, and R2 uploads) and prompted the agent with step-by-step implementation plans for one file at a time rather than trying to generate it all in one go.
+- **Checking the output** — I verified the generated code by writing offline unit tests (`tests/test_exif.py` and `tests/test_enrichment.py`) to test EXIF parsing, timezone conversions, and `Astropy` coordinate calculations without hitting external APIs, and by running end-to-end ingestion and search tests against Neon Postgres and Cloudflare R2.
+- **What I changed** — Because the agent's training cutoff lagged behind the latest Google GenAI SDK models, it initially wrote `core/rag.py` using deprecated models (`text-embedding-004` and `gemini-3.5-flash`). I updated the RAG and embedding pipeline to use `gemini-embedding-001` (with a 3072-dimension `pgvector` column) and `gemini-3.6-flash`. Additionally, the agent's initial upload pipeline pushed the original JPEG files directly to Cloudflare R2; I prompted it to add `strip_metadata()` in `ingestion/exif.py` to apply the orientation tag and re-save the image into an in-memory buffer with all device EXIF tags removed before uploading.
+
 ## Tech stack
 
 | | |
